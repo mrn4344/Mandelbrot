@@ -54,7 +54,7 @@ def main():
     for y in range(0, height):
         for x in range(0,width):
             c = pixelToCoord((x,y))
-            if(me.isInSet(im.imaginary(c[0], c[1]), 1024)):
+            if(me.isInSet(complex(c[0], c[1]), 1024)):
                 img.putpixel((x,y), (0,0,0))
         print("Row " + str(y))
             #print("Trying point" + str(c))

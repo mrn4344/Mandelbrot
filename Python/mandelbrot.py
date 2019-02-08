@@ -13,12 +13,13 @@ class mandelbrot(object):
             z    : imaginary
             c    : imaginary
         return z^power + c"""
-        new_z = z.deepCopy()
+        #new_z = z.deepCopy()
 
         for i in range(1, power):
-            new_z.mult(z)
+            #new_z.mult(z)
+            z = z**2
 
-        return new_z.add(c)
+        return z + c
 
 
     def isInSet(self, c, n):
@@ -28,11 +29,13 @@ class mandelbrot(object):
         n : integer
         return: if the point c, when iterated using the defined power function
         doesn't diverge after n itererations"""
-        z = im.imaginary(0, 0)
+        #z = im.imaginary(0, 0)
+        z = complex(0, 0)
         for i in range(0, n-1):
             z = self.power_func(self.func, z, c)
 
-            if z.re*z.re + z.im*z.im > 4:
+            #if z.re*z.re + z.im*z.im > 4:
+            if z.real**2 + z.imag**2 > 4:
                 return False
         return True
 
