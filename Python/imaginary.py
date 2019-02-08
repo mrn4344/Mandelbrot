@@ -1,3 +1,5 @@
+import math
+
 class imaginary(object):
     """Class for representing, and doing arithmatic with complex numbers"""
 
@@ -24,7 +26,7 @@ class imaginary(object):
         return imaginary( (a.re * b.re) - ( a.im * b.im) , ( (a.re * b.im) + (a.im * b.re) ) )
 
 
-    def add(c):
+    def add(self, c):
         """Method for computing complex addition.
         Arguments:
              self & c: imaginary objects
@@ -35,7 +37,7 @@ class imaginary(object):
         return self
 
 
-    def mult(c):
+    def mult(self, c):
         """Method for computing complex multiplicationself.
         Arguments:
             self & c: imaginary objects
@@ -45,6 +47,19 @@ class imaginary(object):
         self.im = (self.re * c.im) + (self.im * c.re)
         return self
 
+    def cMag(self):
+        """Calculates the distance from the origin.
+        Arguments:
+            self (imaginary)
+        Returns the distance from the origin."""
+        return math.sqrt( (self.re*self.re) + (self.im*self.im) )
+
+    def deepCopy(self):
+        """Creates a deep copy of self
+        Arguments:
+            self (imaginary)
+        Returns a imaginary of a different reference but same value"""
+        return imaginary(self.re, self.im)
 
     def __init__(self, real, complex):
         super(imaginary, self).__init__()
