@@ -1,5 +1,8 @@
-import turtle as t
-import math
+import mandelbrot as mand
+import imaginary as im
+from PIL import Image
+#import turtle as t
+#import math
 
 width = 1600
 height = 900
@@ -45,30 +48,22 @@ def pixelToCoord( pos ):
 
 
 def main():
-    init()
-    values = [([None] * height)] * width
+    me = mand.mandelbrot(2)
+    img = Image.new('RGB', (1920,1080), color = 'white')
+    #values = [([None] * height)] * width
     for y in range(0, height):
         for x in range(0,width):
             c = pixelToCoord((x,y))
-            values[x][y] = inMandelbrot(c)
-        if(y%10 == 0):
-            print("Row " + str(y))
-    print("Done calc")
-    for y in range(0, height):
-        for x in range(0,width):
-            t.pd()
-            if values[x][y]:
-                drawPixel( (x,y), (0,0,0))
-            else:
-                drawPixel( (x,y), '#ff0000')
-            t.pu()
+            if(me.isInSet(im.imaginary(c[0], c[1]), 1024)):
+                img.putpixel((x,y), (0,0,0))
+        print("Row " + str(y))
             #print("Trying point" + str(c))
             #if inMandelbrot(c):
             #    drawPixel( (x,y), (0,0,0))
             #else:
             #    drawPixel( (x,y), '#ff0000')
-
-        t.update()
+    img.save("output1.png")
+        #t.update()
     # t.goto(0,0)
     # t.pd()
     # t.goto(1600,0)
@@ -78,7 +73,7 @@ def main():
     # t.pd()
     # t.goto(1600,1)
     #t.update()
-    t.exitonclick()
+    #t.exitonclick()
 
 if __name__ == "__main__":
     main()

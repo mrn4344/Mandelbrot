@@ -32,7 +32,7 @@ class mandelbrot(object):
         for i in range(0, n-1):
             z = self.power_func(self.func, z, c)
 
-            if z.cMag() > 2:
+            if z.re*z.re + z.im*z.im > 4:
                 return False
         return True
 
