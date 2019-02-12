@@ -14,4 +14,4 @@ The use of python here is just to be a proof of concept. Will only involve calcu
 
 ##### Current Package Dependencies
 1. Pillow
-..* Can be installed on Windows, OSX, Linux using ```pip install pillow``` in a terminal/command prompt.
+  * Can be installed on Windows, OSX, Linux using ```pip install pillow``` in a terminal/command prompt.
